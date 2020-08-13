@@ -603,7 +603,7 @@
 	modules += new /obj/item/gripper(src)
 	modules += new /obj/item/matter_decompiler(src)
 	modules += new /obj/item/reagent_containers/spray/cleaner/drone(src)
-	modules += new /obj/item/soap(src)
+	modules += new /obj/item/soap/cyborg(src)
 	modules += new /obj/item/t_scanner(src)
 	modules += new /obj/item/rpd(src)
 
