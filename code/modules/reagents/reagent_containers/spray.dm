@@ -111,7 +111,7 @@
 /obj/item/reagent_containers/spray/cleaner/drone
 	name = "space cleaner"
 	desc = "BLAM!-brand non-foaming space cleaner!"
-	volume = 50
+	volume = 250
 	list_reagents = list("cleaner" = 250)
 
 //spray tan
