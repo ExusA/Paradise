@@ -111,3 +111,7 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "borg-cleaner"
 	cleanspeed = 10
+
+/obj/item/soap/afterattack(atom/target, mob/user, proximity)
+	..()
+	playsound('sound/effects/pop.ogg', 50, 0)
