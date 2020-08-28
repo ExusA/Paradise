@@ -241,6 +241,7 @@
 		var/mob/O = M
 		if(!O.lastarea)
 			O.lastarea = get_area(O.loc)
+//		O.update_gravity(O.mob_has_gravity(src))
 
 	// If an opaque movable atom moves around we need to potentially update visibility.
 	if(M.opacity)

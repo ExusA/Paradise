@@ -68,7 +68,6 @@
 	else if(ismouse(target))
 		var/mob/living/simple_animal/mouse/M = target
 		visible_message("<span class='danger'>SPLAT!</span>")
-		M.death()
 		M.splat()
 
 	playsound(loc, 'sound/effects/snap.ogg', 50, 1)

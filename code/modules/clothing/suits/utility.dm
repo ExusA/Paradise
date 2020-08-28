@@ -59,7 +59,6 @@
 /obj/item/clothing/head/bomb_hood
 	name = "bomb hood"
 	desc = "Use in case of bomb."
-	w_class = WEIGHT_CLASS_NORMAL
 	icon_state = "bombsuit"
 	flags = BLOCKHAIR | THICKMATERIAL
 	armor = list(MELEE = 10, BULLET = 0, LASER = 10, ENERGY = 5, BOMB = INFINITY, RAD = 0, FIRE = 200, ACID = 50)

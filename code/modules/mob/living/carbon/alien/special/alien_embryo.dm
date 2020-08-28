@@ -76,7 +76,7 @@
 		return
 	polling = TRUE
 	spawn()
-		var/list/candidates = SSghost_spawns.poll_candidates("Do you want to play as an alien?", ROLE_ALIEN, FALSE, source = /mob/living/carbon/alien/larva)
+		var/list/candidates = pollCandidates("Do you want to play as an alien?", ROLE_ALIEN, 0)
 		var/mob/C = null
 
 		// To stop clientless larva, we will check that our host has a client

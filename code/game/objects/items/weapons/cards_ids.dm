@@ -233,11 +233,6 @@
 				return M
 		owner_ckey = null
 
-/obj/item/card/id/proc/getPlayerCkey()
-	var/mob/living/carbon/human/H = getPlayer()
-	if(istype(H))
-		return H.ckey
-
 /obj/item/card/id/proc/is_untrackable()
 	return untrackable
 

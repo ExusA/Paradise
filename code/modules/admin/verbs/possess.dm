@@ -1,9 +1,6 @@
 /proc/possess(obj/O as obj in world)
 	set name = "\[Admin\] Possess Obj"
 
-	if(!check_rights(R_POSSESS))
-		return
-
 	if(istype(O,/obj/singularity))
 		if(GLOB.configuration.general.forbid_singulo_possession) // I love how this needs to exist
 			to_chat(usr, "It is forbidden to possess singularities.")
@@ -35,9 +32,6 @@
 /proc/release(obj/O as obj in world)
 	set name = "\[Admin\] Release Obj"
 	//usr.loc = get_turf(usr)
-
-	if(!check_rights(R_POSSESS))
-		return
 
 	if(usr.control_object && usr.name_archive) //if you have a name archived and if you are actually relassing an object
 		usr.real_name = usr.name_archive
