@@ -702,6 +702,9 @@
 	LAZYINITLIST(lazy_list[key]); \
 	lazy_list[key] |= value;
 
+/// Returns whether a numerical index is within a given list's bounds. Faster than isnull(LAZYACCESS(L, I)).
+#define ISINDEXSAFE(L, I) (I >= 1 && I <= length(L))
+
 //same, but returns nothing and acts on list in place
 /proc/shuffle_inplace(list/L)
 	if(!L)

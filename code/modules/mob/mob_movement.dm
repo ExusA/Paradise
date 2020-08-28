@@ -375,8 +375,9 @@
 	else
 		. = step(pulling, get_dir(pulling.loc, A))
 
-/mob/proc/update_gravity()
+/mob/proc/update_gravity(has_gravity)
 	return
+
 /client/proc/check_has_body_select()
 	return mob && mob.hud_used && mob.hud_used.zone_select && istype(mob.hud_used.zone_select, /atom/movable/screen/zone_sel)
 
