@@ -53,6 +53,7 @@
 	owner = null
 	if(M)
 		M.internal_organs -= src
+		START_PROCESSING(SSobj, src)
 		if(M.internal_organs_slot[slot] == src)
 			M.internal_organs_slot.Remove(slot)
 		if(vital && !special)
@@ -66,6 +67,7 @@
 			log_runtime(EXCEPTION("[src] attempted to remove from a [parent_organ], but [parent_organ] didn't exist! [atom_loc_line(M)]"), src)
 		else
 			parent.internal_organs -= src
+			START_PROCESSING(SSobj, src)
 		H.update_int_organs()
 
 	for(var/X in actions)
