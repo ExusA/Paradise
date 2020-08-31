@@ -58,6 +58,7 @@
 		if(vital && !special)
 			if(M.stat != DEAD)//safety check!
 				M.death()
+		START_PROCESSING(SSobj, src)
 
 	if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
