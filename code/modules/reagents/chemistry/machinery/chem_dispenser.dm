@@ -25,6 +25,7 @@
 	var/hack_message = "You disable the safety safeguards, enabling the \"Mad Scientist\" mode."
 	var/unhack_message = "You re-enable the safety safeguards, enabling the \"NT Standard\" mode."
 	var/is_drink = FALSE
+	var/obj/machinery/chem_heater/connected
 
 /obj/machinery/chem_dispenser/get_cell()
 	return cell
@@ -102,9 +103,24 @@
 	powerefficiency = round(newpowereff, 0.01)
 
 /obj/machinery/chem_dispenser/Destroy()
+	connected = null
 	QDEL_NULL(beaker)
 	QDEL_NULL(cell)
 	return ..()
+
+/obj/machinery/chem_dispenser/proc/add_pipe_overlay()
+	for(var/card in GLOB.cardinal)
+		var/turf/T = get_step(src,card)
+		if(!locate(connected) in T.contents)
+			continue
+		else
+			overlays += "dispenser_[card]"
+			break
+
+/obj/machinery/chem_dispenser/proc/disconnect()
+	connected.connected = null
+	connected = null
+	overlays.Cut()
 
 /obj/machinery/chem_dispenser/examine(mob/user)
 	. = ..()
@@ -225,6 +241,9 @@
 			if(!beaker)
 				return
 			beaker.forceMove(loc)
+			connected.beaker = null
+			SStgui.update_uis(src)
+			SStgui.update_uis(connected)
 			if(Adjacent(usr) && !issilicon(usr))
 				usr.put_in_hands(beaker)
 			beaker = null
@@ -255,6 +274,7 @@
 			return
 		beaker =  I
 		I.forceMove(src)
+		connected.beaker = I
 		to_chat(user, "<span class='notice'>You set [I] on the machine.</span>")
 		SStgui.update_uis(src) // update all UIs attached to src
 		if(!icon_beaker)
@@ -279,6 +299,32 @@
 		cell = null
 	return ..()
 
+/obj/machinery/chem_dispenser/wirecutter_act(mob/user, obj/item/wirecutters/I)
+	. = TRUE
+	if(!I.use_tool(src, user, 0, volume = I.tool_volume))
+		return
+	if(!anchored)
+		to_chat(user, "<span class=warning>\The [src] needs to be anchored in order to connect its piping!</span>")
+		return FALSE
+	if(connected)
+		disconnect()
+		to_chat(user, "<span class=notice>You disconnect \the [src]\'s tubing.</span>")
+		return TRUE
+	if(I.pipe)
+		var/obj/machinery/chem_heater/C = I.pipe
+		if(C.type == type)
+			to_chat(user, "<span class=notice>You put the tubing back in the [I.pipe].</span>")
+			I.pipe = null
+			return
+		connected = C
+		C.connected = src
+		I.pipe = null
+		to_chat(user, "<span class=notice>You link the [I.pipe] to \the [src]!</span>")
+		return
+	disconnect()
+	I.pipe = src
+	to_chat(user, "<span class=notice>You begin to link \the [src]\'s piping...</span>")
+	return
 
 /obj/machinery/chem_dispenser/multitool_act(mob/user, obj/item/I)
 	. = TRUE

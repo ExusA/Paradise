@@ -7,13 +7,17 @@
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 40
 	resistance_flags = FIRE_PROOF|ACID_PROOF
-	var/obj/item/reagent_containers/beaker = null
+	var/obj/item/reagent_containers/beaker
 	var/desired_temp = T0C
 	var/on = FALSE
 	/// Whether this should auto-eject the beaker once done heating/cooling.
 	var/auto_eject = FALSE
 	/// The higher this number, the faster reagents will heat/cool.
 	var/speed_increase = 0
+
+	//Connecting vars
+	var/obj/machinery/chem_dispenser/connected //Reference to the connected dispenser.
+	var/adjacentmode = FALSE //FALSE means the heater heats its own beaker. TRUE means the heater can't accept a beaker, and heats linked devices instead.
 
 /obj/machinery/chem_heater/New()
 	..()
@@ -28,11 +32,31 @@
 	for(var/obj/item/stock_parts/micro_laser/M in component_parts)
 		speed_increase += 5 * (M.rating - 1)
 
+/obj/machinery/chem_heater/Destroy()
+	connected = null
+
+/obj/machinery/chem_heater/proc/add_pipe_overlay()
+	for(var/card in GLOB.cardinal)
+		var/turf/T = get_step(src,card)
+		if(!locate(connected) in T.contents)
+			continue
+		else
+			overlays += "heater_[card]"
+			break
+
+/obj/machinery/chem_heater/proc/disconnect()
+	connected.connected = null
+	connected = null
+	overlays.Cut()
+
 /obj/machinery/chem_heater/process()
 	..()
 	if(stat & (NOPOWER|BROKEN))
 		return
 	if(on)
+		if(connected)
+			var/obj/machinery/chem_dispenser/C = connected
+			beaker = C.beaker
 		if(beaker)
 			if(!beaker.reagents.total_volume)
 				on = FALSE
@@ -46,6 +70,15 @@
 
 /obj/machinery/chem_heater/proc/eject_beaker(mob/user)
 	if(beaker)
+		if(adjacentmode && connected) //If you try to eject the beaker from a paired heater, eject it from the linked dispenser instead.
+			connected.beaker.forceMove(connected.loc)
+			connected.beaker = null
+			beaker = null
+			connected.overlays.Cut()
+			SStgui.update_uis(src)
+			SStgui.update_uis(connected)
+			on = FALSE
+			return
 		beaker.forceMove(get_turf(src))
 		if(user && Adjacent(user) && !issilicon(user))
 			user.put_in_hands(beaker)
@@ -66,10 +99,12 @@
 		return
 
 	if(istype(I, /obj/item/reagent_containers/glass))
+		if(adjacentmode)
+			to_chat(user, "<span class=warning>You must open the beaker cover before adding a beaker to [src]!</span>")
+			return
 		if(beaker)
 			to_chat(user, "<span class='notice'>A beaker is already loaded into the machine.</span>")
 			return
-
 		if(user.drop_item())
 			beaker = I
 			I.forceMove(src)
@@ -83,8 +118,43 @@
 
 	return ..()
 
+/obj/machinery/chem_heater/wirecutter_act(mob/user, obj/item/wirecutters/I)
+	. = TRUE
+	if(!I.use_tool(src, user, 0, volume = I.tool_volume))
+		return
+	if(!anchored)
+		to_chat(user, "<span class=warning>\The [src] needs to be anchored in order to connect its piping!</span>")
+		return FALSE
+	if(!adjacentmode)
+		to_chat(user, "<span class=warning>The panel on \the [src] must be closed before you can connect its tubing!</span>")
+		return FALSE
+	if(connected)
+		disconnect()
+		to_chat(user, "<span class=notice>You disconnect \the [src]\'s tubing.</span>")
+		return TRUE
+	if(I.pipe)
+		var/obj/machinery/chem_dispenser/C = I.pipe
+		if(C == src)
+			to_chat(user, "<span class=notice>You put the tubing back in \the [C].</span>")
+			I.pipe = null
+			return
+		connected = C
+		C.connected = src
+		beaker = C.beaker
+		add_pipe_overlay()
+		to_chat(user, "<span class=notice>You link \the [I.pipe] to \the [src]!</span>")
+		I.pipe = null
+		SStgui.update_uis(src)
+		return
+	I.pipe = src
+	to_chat(user, "<span class=notice>You begin to link \the [src]\'s piping...</span>")
+	return
+
 /obj/machinery/chem_heater/wrench_act(mob/user, obj/item/I)
 	. = TRUE
+	if(connected)
+		to_chat(user, "<span class=notice>You have to disconnect the piping before you can move \the [src].</span>")
+		return FALSE
 	default_unfasten_wrench(user, I)
 
 /obj/machinery/chem_heater/screwdriver_act(mob/user, obj/item/I)
@@ -92,9 +162,18 @@
 	default_deconstruction_screwdriver(user, "mixer0b", "mixer0b", I)
 
 /obj/machinery/chem_heater/crowbar_act(mob/user, obj/item/I)
-	if(!panel_open)
-		return
 	. = TRUE
+	if(!I.use_tool(src, user, 0, volume = I.tool_volume))
+		return
+	if(!panel_open)
+		if(beaker)
+			to_chat(user, "<span class=warning>\The [beaker] must be removed from \the [beaker.loc] before the connection panel can be closed.</span>")
+			return FALSE
+		adjacentmode = !adjacentmode
+		if(connected)
+			disconnect()
+		to_chat(user, "<span class=notice>You [adjacentmode ? "close" : "open"] the connection panel on \the [src].</span>")
+		icon_state = "[adjacentmode ? "mixer2b" : "mixer0b"]"
 	eject_beaker()
 	default_deconstruction_crowbar(user, I)
 
