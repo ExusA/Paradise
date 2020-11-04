@@ -488,5 +488,8 @@
 
 /obj/machinery/disco/immobile
 	name = "radiant dance machine mark V"
-	desc = "Cast with a sturdy plastitanium frame and connected to a deep concrete foundation, the mark V is nigh-immovable after repeated theft incidents with past models."
+	desc = "The mark V is nigh-immovable, thanks to its bluespace-plastitanium anchor. The technology required to stop visitors from stealing this thing is astounding."
 	anchored = TRUE
+
+/obj/machinery/disco/immobile/wrench_act()
+	return FALSE
