@@ -483,3 +483,10 @@
 		playsound(src,'sound/machines/terminal_off.ogg',50,1)
 		icon_state = "disco0"
 		stop = world.time + 100
+
+
+
+/obj/machinery/disco/immobile
+	name = "radiant dance machine mark V"
+	desc = "Cast with a sturdy plastitanium frame and connected to a deep concrete foundation, the mark V is nigh-immovable after repeated theft incidents with past models."
+	anchored = TRUE
