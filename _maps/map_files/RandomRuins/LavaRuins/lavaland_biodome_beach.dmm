@@ -411,11 +411,6 @@
 /obj/item/clothing/mask/gas,
 /turf/simulated/floor/pod,
 /area/ruin/powered/beach)
-"fw" = (
-/obj/structure/chair/wood,
-/obj/structure/table,
-/turf/simulated/floor/wood,
-/area/ruin/powered/beach)
 "gg" = (
 /obj/effect/turf_decal/sand,
 /turf/simulated/floor/pod/dark,
@@ -984,7 +979,7 @@ aa
 aa
 bW
 ai
-fw
+at
 aQ
 sp
 aC
