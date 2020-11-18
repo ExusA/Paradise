@@ -5,64 +5,70 @@
 	icon = 'icons/obj/fish_items.dmi'
 	icon_state = "eggs"
 	w_class = WEIGHT_CLASS_SMALL
-	var/datum/fish/fish_type = null			//Holds the datum of the fish that the egg is for, null means dud eggs
+	var/obj/item/reagent_containers/food/snacks/fish/fish_type = null			//A reference to the fish this egg hatches into, null means a dud egg.
 
 /obj/item/fish_eggs/goldfish
 	name = "goldfish eggs"
 	desc = "Goldfish eggs, surprisingly, don't contain actual gold."
 	icon_state = "gold_eggs"
-	fish_type = /datum/fish/goldfish
+	fish_type = /obj/item/reagent_containers/food/snacks/fish/goldfish
 
 /obj/item/fish_eggs/clownfish
 	name = "clownfish eggs"
 	desc = "Even as eggs, they are funnier than the clown. HONK!"
 	icon_state = "clown_eggs"
-	fish_type = /datum/fish/clownfish
+	fish_type = /obj/item/reagent_containers/food/snacks/fish/clownfish
 
 /obj/item/fish_eggs/shark
 	name = "shark eggs"
 	desc = "We're gonna need a- Oh wait, they're still eggs."
 	icon_state = "shark_eggs"
-	fish_type = /datum/fish/shark
+	fish_type = /obj/item/reagent_containers/food/snacks/fish/shark
 
 /obj/item/fish_eggs/babycarp
 	name = "baby space carp eggs"
 	desc = "Eggs from the substantially smaller form of the intergalactic terror."
 	icon_state = "babycarp_eggs"
-	fish_type = /datum/fish/babycarp
+	fish_type = /obj/item/reagent_containers/food/snacks/fish/babycarp
 
 /obj/item/fish_eggs/catfish
 	name = "catfish eggs"
 	desc = "A bottom-feeding species noted for their similarity to cats and Tajaran."
 	icon_state = "catfish_eggs"
-	fish_type = /datum/fish/catfish
+	fish_type = /obj/item/reagent_containers/food/snacks/fish/catfish
 
 /obj/item/fish_eggs/feederfish
 	name = "feeder fish eggs"
 	desc = "These generic fish are commonly found being eaten by larger fish."
 	icon_state = "feederfish_eggs"
-	fish_type = /datum/fish/feederfish
+	fish_type = /obj/item/reagent_containers/food/snacks/fish/feederfish
 
 /obj/item/fish_eggs/salmon
 	name = "salmon eggs"
 	desc = "A collection of salmon eggs."
 	icon_state = "salmon_eggs"
-	fish_type = /datum/fish/salmon
+	fish_type = /obj/item/reagent_containers/food/snacks/fish/salmon
 
 /obj/item/fish_eggs/shrimp
 	name = "shrimp eggs"
 	desc = "Eggs for shrimp. You figured they'd be smaller though..."
 	icon_state = "shrimp_eggs"
-	fish_type = /datum/fish/shrimp
+	fish_type = /obj/item/reagent_containers/food/snacks/fish/shrimp
 
 /obj/item/fish_eggs/electric_eel
 	name = "electric eel eggs"
 	desc = "A pile of eggs for a slimy, shocking, sea-serpent."
 	icon_state = "electric_eel_eggs"
-	fish_type = /datum/fish/electric_eel
+	fish_type = /obj/item/reagent_containers/food/snacks/fish/electric_eel
 
 /obj/item/fish_eggs/glofish
 	name = "glofish eggs"
 	desc = "A cluster of bright neon eggs belonging to a bio-luminescent species of fish."
 	icon_state = "glofish_eggs"
-	fish_type = /datum/fish/glofish
+	fish_type = /obj/item/reagent_containers/food/snacks/fish/glofish
+
+/obj/item/fish_eggs/crimson_ray
+	name = "crimson ray eggs"
+	desc = "A foul-smelling cluster of eggs laid by a crimson ray. Slightly less unsettling than their parents... slightly."
+	icon_state = "ray_eggs"
+	fish_type = /obj/item/reagent_containers/food/snacks/fish/crimson_ray
