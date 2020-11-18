@@ -317,7 +317,7 @@
 	desc = "A costume made from authentic salmon scales, it reeks!"
 	icon_state = "salmon"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	allowed = list(/obj/item/fish/salmon, /obj/item/fish_eggs/salmon)
+	allowed = list(/obj/item/reagent_containers/food/snacks/fish/salmon, /obj/item/fish_eggs/salmon)
 	hoodtype = /obj/item/clothing/head/hooded/salmon_hood
 
 /obj/item/clothing/head/hooded/salmon_hood

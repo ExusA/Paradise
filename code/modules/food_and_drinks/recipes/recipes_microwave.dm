@@ -656,6 +656,6 @@
 /datum/recipe/microwave/boiled_shrimp
 	reagents = list("water" = 5)
 	items = list(
-		/obj/item/reagent_containers/food/snacks/shrimp
+		/obj/item/reagent_containers/food/snacks/fish/shrimp
 	)
 	result = /obj/item/reagent_containers/food/snacks/boiled_shrimp

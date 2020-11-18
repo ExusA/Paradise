@@ -36,6 +36,7 @@
 #include "code\__DEFINES\cult.dm"
 #include "code\__DEFINES\dna.dm"
 #include "code\__DEFINES\error_handler.dm"
+#include "code\__DEFINES\fish.dm"
 #include "code\__DEFINES\flags.dm"
 #include "code\__DEFINES\game.dm"
 #include "code\__DEFINES\gamemode.dm"

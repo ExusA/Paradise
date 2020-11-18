@@ -96,7 +96,7 @@
 	return istype(I, input)
 
 /datum/deepfryer_special/shrimp
-	input = /obj/item/reagent_containers/food/snacks/shrimp
+	input = /obj/item/reagent_containers/food/snacks/fish/shrimp
 	output = /obj/item/reagent_containers/food/snacks/fried_shrimp
 
 /datum/deepfryer_special/banana

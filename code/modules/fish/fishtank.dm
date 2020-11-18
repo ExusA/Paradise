@@ -300,14 +300,14 @@
 
 /obj/machinery/fishtank/proc/harvest_fish(mob/user)
 	if(fish_count <= 0)									//Can't catch non-existant fish!
-		to_chat(user, "There are no fish in [src] to catch!")
+		to_chat(user, "<span class='notice'>There are no fish in [src] to catch!</span>")
 		return
 	var/list/fish_names_list = list()
 	for(var/datum/fish/fish_type in fish_list)
 		fish_names_list += list("[fish_type.fish_name]" = fish_type)
 	var/caught_fish = input("Select a fish to catch.", "Fishing") as null|anything in fish_names_list		//Select a fish from the tank
 	if(fish_count <= 0)
-		to_chat(user, "There are no fish in [src] to catch!")
+		to_chat(user, "<span class='notice'>There are no fish in [src] to catch!</span>")
 		return
 	else if(caught_fish)
 		user.visible_message("[user.name] harvests \a [caught_fish] from [src].", "You scoop \a [caught_fish] out of [src].")
@@ -633,15 +633,16 @@
 		else
 			to_chat(user, "<span class='notice'>[src] doesn't have any water in it. You should fill it with water first.</span>")
 	//Fish egg scoop
-	else if(istype(O, /obj/item/egg_scoop))
-		if(egg_count)
-			user.visible_message("<span class='notice'>[user.name] harvests some fish eggs from [src].</span>", "<span class='notice'>You scoop the fish eggs out of [src].</span>")
-			harvest_eggs(user)
-		else
-			user.visible_message("<span class='notice'>[user.name] fails to harvest any fish eggs from [src].</span>", "<span class='notice'>There are no fish eggs in [src] to scoop out.</span>")
-	//Fish net
 	else if(istype(O, /obj/item/fish_net))
-		harvest_fish(user)
+		var/obj/item/fish_net/F = O
+		if(F.mode == MODE_FISHEGGS)
+			if(egg_count > 0)
+				user.visible_message("<span class='notice'>[user.name] harvests some fish eggs from [src].</span>", "<span class='notice'>You scoop the fish eggs out of [src].</span>")
+				harvest_eggs(user)
+			if(egg_count <= 0)
+				user.visible_message("<span class='notice'>[user.name] fails to harvest any fish eggs from [src].</span>", "<span class='notice'>There are no fish eggs in [src] to scoop out.</span>")
+		else if(F.mode == MODE_FISH)
+			harvest_fish(user)
 	//Tank brush
 	else if(istype(O, /obj/item/tank_brush))
 		if(filth_level == 0)

@@ -157,7 +157,7 @@
 	name = "Salmon Suit"
 	result = /obj/item/clothing/suit/hooded/salmon_costume
 	time = 60
-	reqs = list(/obj/item/fish/salmon = 20,
+	reqs = list(/obj/item/reagent_containers/food/snacks/fish/salmon = 20,
 				/obj/item/stack/tape_roll = 5)
 	tools = list(TOOL_WIRECUTTER)
 	pathtools = list(/obj/item/kitchen/knife)

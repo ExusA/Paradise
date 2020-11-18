@@ -159,7 +159,7 @@
 /datum/recipe/grill/sushi_Unagi
 	reagents = list("sake" = 5)
 	items = list(
-		/obj/item/fish/electric_eel,
+		/obj/item/reagent_containers/food/snacks/fish/electric_eel,
 		/obj/item/reagent_containers/food/snacks/boiledrice,
 	)
 	result = /obj/item/reagent_containers/food/snacks/sushi_Unagi
@@ -233,10 +233,10 @@
 
 /datum/recipe/grill/shrimp_skewer
 	items = list(
-		/obj/item/reagent_containers/food/snacks/shrimp,
-		/obj/item/reagent_containers/food/snacks/shrimp,
-		/obj/item/reagent_containers/food/snacks/shrimp,
-		/obj/item/reagent_containers/food/snacks/shrimp,
+		/obj/item/reagent_containers/food/snacks/fish/shrimp,
+		/obj/item/reagent_containers/food/snacks/fish/shrimp,
+		/obj/item/reagent_containers/food/snacks/fish/shrimp,
+		/obj/item/reagent_containers/food/snacks/fish/shrimp,
 		/obj/item/stack/rods,
 	)
 	result = /obj/item/reagent_containers/food/snacks/shrimp_skewer

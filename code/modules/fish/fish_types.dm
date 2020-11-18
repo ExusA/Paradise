@@ -11,32 +11,32 @@
 /datum/fish/goldfish
 	fish_name = "goldfish"
 	egg_item = /obj/item/fish_eggs/goldfish
-	fish_item = /obj/item/fish/goldfish
+	fish_item = /obj/item/reagent_containers/food/snacks/fish/goldfish
 
 /datum/fish/glofish
 	fish_name = "glofish"
 	egg_item = /obj/item/fish_eggs/glofish
-	fish_item = /obj/item/fish/glofish
+	fish_item = /obj/item/reagent_containers/food/snacks/fish/glofish
 
 /datum/fish/clownfish
 	fish_name = "clownfish"
 	egg_item = /obj/item/fish_eggs/clownfish
-	fish_item = /obj/item/grown/bananapeel/clownfish
+	fish_item = /obj/item/reagent_containers/food/snacks/fish/clownfish
 
 /datum/fish/shark
 	fish_name = "shark"
 	egg_item = /obj/item/fish_eggs/shark
-	fish_item = /obj/item/fish/shark
+	fish_item = /obj/item/reagent_containers/food/snacks/fish/shark
 
 /datum/fish/babycarp
 	fish_name = "baby space carp"
 	egg_item = /obj/item/fish_eggs/babycarp
-	fish_item = /obj/item/fish/babycarp
+	fish_item = /obj/item/reagent_containers/food/snacks/fish/babycarp
 
 /datum/fish/catfish
 	fish_name = "catfish"
 	egg_item = /obj/item/fish_eggs/catfish
-	fish_item = /obj/item/fish/catfish
+	fish_item = /obj/item/reagent_containers/food/snacks/fish/catfish
 
 /datum/fish/catfish/special_interact(obj/machinery/fishtank/my_tank)
 	if(!my_tank || !istype(my_tank))
@@ -47,18 +47,18 @@
 /datum/fish/salmon
 	fish_name = "salmon"
 	egg_item = /obj/item/fish_eggs/salmon
-	fish_item = /obj/item/fish/salmon
+	fish_item = /obj/item/reagent_containers/food/snacks/fish/salmon
 
 /datum/fish/shrimp
 	fish_name = "shrimp"
 	egg_item = /obj/item/fish_eggs/shrimp
-	fish_item = /obj/item/reagent_containers/food/snacks/shrimp
+	fish_item = /obj/item/reagent_containers/food/snacks/fish/shrimp
 	crossbreeder = 0
 
 /datum/fish/feederfish
 	fish_name = "feeder fish"
 	egg_item = /obj/item/fish_eggs/feederfish
-	fish_item = /obj/item/reagent_containers/food/snacks/feederfish
+	fish_item = /obj/item/reagent_containers/food/snacks/fish/feederfish
 
 /datum/fish/feederfish/special_interact(obj/machinery/fishtank/my_tank)
 	if(!my_tank || !istype(my_tank))
@@ -72,5 +72,5 @@
 /datum/fish/electric_eel
 	fish_name = "electric eel"
 	egg_item = /obj/item/fish_eggs/electric_eel
-	fish_item = /obj/item/fish/electric_eel
+	fish_item = /obj/item/reagent_containers/food/snacks/fish/electric_eel
 	crossbreeder = 0
