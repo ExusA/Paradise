@@ -1567,15 +1567,10 @@
 
 /obj/item/toy/figure
 	name = "Non-Specific Action Figure action figure"
-	desc = "A \"Space Life\" brand... wait, what the hell is this thing?"
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "nuketoy"
 	var/cooldown = 0
 	var/toysay = "What the fuck did you do?"
-
-/obj/item/toy/figure/New()
-	..()
-	desc = "A \"Space Life\" brand [name]"
 
 /obj/item/toy/figure/attack_self(mob/user as mob)
 	if(cooldown < world.time)
