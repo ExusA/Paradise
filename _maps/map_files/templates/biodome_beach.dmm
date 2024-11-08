@@ -46,7 +46,6 @@
 /area/ruin/powered/beach)
 "ai" = (
 /obj/structure/extinguisher_cabinet{
-	name = "custom placement";
 	pixel_y = 29
 	},
 /turf/simulated/floor/wood,
@@ -110,21 +109,17 @@
 /area/ruin/powered/beach)
 "au" = (
 /obj/structure/table,
-/obj/item/reagent_containers/condiment/flour,
-/obj/item/reagent_containers/condiment/flour,
+/obj/item/reagent_containers/food/condiment/flour,
+/obj/item/reagent_containers/food/condiment/flour,
 /turf/simulated/floor/wood,
 /area/ruin/powered/beach)
 "av" = (
 /obj/structure/table/wood,
-/obj/machinery/door/window/classic/reversed{
-	dir = 8;
-	name = "Beach Bar Desk"
+/obj/machinery/door/window/westright{
+	req_one_access_txt = "25"
 	},
-/obj/item/reagent_containers/drinks/shaker,
+/obj/item/reagent_containers/food/drinks/shaker,
 /obj/item/reagent_containers/glass/rag,
-/obj/effect/mapping_helpers/airlock/windoor/access/any/service/bar{
-	dir = 8
-	},
 /turf/simulated/floor/wood,
 /area/ruin/powered/beach)
 "aw" = (
@@ -137,7 +132,7 @@
 /area/ruin/powered/beach)
 "ax" = (
 /obj/machinery/disco/immobile,
-/turf/simulated/floor/light,
+/turf/simulated/floor/light/colour_cycle,
 /area/ruin/powered/beach)
 "ay" = (
 /obj/machinery/door/airlock/sandstone{
@@ -166,12 +161,8 @@
 /area/ruin/powered/beach)
 "aE" = (
 /obj/structure/table/wood,
-/obj/machinery/door/window/classic/normal{
-	dir = 8;
-	name = "Beach Bar Desk"
-	},
-/obj/effect/mapping_helpers/airlock/windoor/access/any/service/bar{
-	dir = 8
+/obj/machinery/door/window/westleft{
+	req_one_access_txt = "25"
 	},
 /turf/simulated/floor/wood,
 /area/ruin/powered/beach)
@@ -182,15 +173,15 @@
 /turf/simulated/floor/plating,
 /area/ruin/powered/beach)
 "aI" = (
-/obj/machinery/economy/vending/dinnerware,
+/obj/machinery/vending/dinnerware,
 /turf/simulated/floor/wood,
 /area/ruin/powered/beach)
 "aJ" = (
 /obj/structure/closet/crate,
-/obj/item/tank/internals/emergency_oxygen,
+/obj/item/tank/emergency_oxygen,
 /obj/item/trash/candy,
 /obj/effect/turf_decal/sand,
-/obj/item/toy/figure/crew/bartender,
+/obj/item/toy/figure/bartender,
 /turf/simulated/floor/beach/sand,
 /area/ruin/powered/beach)
 "aK" = (
@@ -199,12 +190,12 @@
 /area/ruin/powered/beach)
 "aL" = (
 /obj/effect/turf_decal/sand,
-/obj/machinery/economy/vending/cigarette/beach,
+/obj/machinery/vending/cigarette/beach,
 /turf/simulated/floor/beach/sand,
 /area/ruin/powered/beach)
 "aN" = (
 /obj/effect/turf_decal/sand,
-/obj/machinery/economy/vending/cola/free,
+/obj/machinery/vending/cola/free,
 /turf/simulated/floor/beach/sand,
 /area/ruin/powered/beach)
 "aQ" = (
@@ -220,6 +211,10 @@
 /area/ruin/powered/beach)
 "aU" = (
 /obj/effect/overlay/palmtree_l,
+/turf/simulated/floor/beach/sand,
+/area/ruin/powered/beach)
+"aV" = (
+/obj/effect/mob_spawn/human/beach/alive,
 /turf/simulated/floor/beach/sand,
 /area/ruin/powered/beach)
 "aZ" = (
@@ -283,7 +278,7 @@
 /turf/simulated/floor/pod,
 /area/ruin/powered/beach)
 "br" = (
-/obj/effect/baseturf_helper/lava/mapping_lava,
+/obj/effect/baseturf_helper/lava_land/surface,
 /turf/simulated/floor/beach/sand,
 /area/ruin/powered/beach)
 "bx" = (
@@ -337,6 +332,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
+/obj/effect/mob_spawn/human/beach/alive/lifeguard,
 /turf/simulated/floor/wood,
 /area/ruin/powered/beach)
 "bJ" = (
@@ -352,7 +348,7 @@
 /turf/simulated/floor/beach/water,
 /area/ruin/powered/beach)
 "bM" = (
-/turf/simulated/floor/plasteel/stairs,
+/turf/simulated/floor/plasteel/stairs/old,
 /area/ruin/powered/beach)
 "bN" = (
 /obj/structure/flora/ausbushes/reedbush,
@@ -363,7 +359,7 @@
 /turf/simulated/floor/beach/sand,
 /area/ruin/powered/beach)
 "bP" = (
-/obj/item/reagent_containers/drinks/cans/beer,
+/obj/item/reagent_containers/food/drinks/cans/beer,
 /turf/simulated/floor/beach/sand,
 /area/ruin/powered/beach)
 "bQ" = (
@@ -410,7 +406,7 @@
 /area/ruin/powered/beach)
 "cR" = (
 /obj/structure/table/wood,
-/obj/item/tank/internals/oxygen,
+/obj/item/tank/oxygen,
 /obj/item/pickaxe,
 /obj/item/clothing/mask/gas,
 /turf/simulated/floor/pod,
@@ -427,7 +423,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/turf/simulated/floor/pod/light/lavaland_air,
+/turf/simulated/floor/pod/light,
 /area/ruin/powered/beach)
 "lM" = (
 /obj/structure/dresser,
@@ -450,12 +446,6 @@
 	},
 /turf/simulated/floor/pod,
 /area/ruin/powered/beach)
-"qe" = (
-/obj/machinery/barsign{
-	pixel_y = 32
-	},
-/turf/simulated/floor/beach/sand,
-/area/ruin/powered/beach)
 "qT" = (
 /obj/machinery/shower{
 	dir = 8
@@ -469,7 +459,7 @@
 /turf/simulated/floor/wood,
 /area/ruin/powered/beach)
 "uA" = (
-/obj/item/beacon,
+/obj/item/radio/beacon,
 /turf/simulated/floor/beach/sand,
 /area/ruin/powered/beach)
 "uP" = (
@@ -478,6 +468,10 @@
 	},
 /obj/structure/flora/rock,
 /turf/simulated/floor/beach/sand,
+/area/ruin/powered/beach)
+"wb" = (
+/obj/effect/mob_spawn/human/bartender/alive,
+/turf/simulated/floor/wood,
 /area/ruin/powered/beach)
 "yc" = (
 /obj/structure/weightmachine/weightlifter,
@@ -493,6 +487,10 @@
 	},
 /turf/simulated/floor/beach/sand,
 /area/ruin/powered/beach)
+"Ds" = (
+/obj/structure/sign/barsign,
+/turf/simulated/wall/mineral/sandstone,
+/area/ruin/powered/beach)
 "Ec" = (
 /obj/machinery/door/airlock/sandstone{
 	name = "Beach Access"
@@ -501,9 +499,9 @@
 /area/ruin/powered/beach)
 "Ei" = (
 /obj/machinery/door/airlock/sandstone{
-	name = "Bar Kitchen"
+	name = "Bar Kitchen";
+	req_one_access_txt = "25"
 	},
-/obj/effect/mapping_helpers/airlock/access/any/service/bar,
 /turf/simulated/floor/wood,
 /area/ruin/powered/beach)
 "Gc" = (
@@ -537,13 +535,13 @@
 /turf/simulated/floor/beach/sand,
 /area/ruin/powered/beach)
 "TD" = (
-/turf/template_noop,
+/turf/simulated/floor/plating/asteroid/basalt/lava,
 /area/ruin/powered/beach)
 "TP" = (
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/simulated/floor/pod/light/lavaland_air,
+/turf/simulated/floor/pod/light,
 /area/ruin/powered/beach)
 "TW" = (
 /obj/structure/table/reinforced,
@@ -793,7 +791,7 @@ af
 aj
 bE
 bE
-bE
+aV
 bE
 bE
 bE
@@ -1079,10 +1077,10 @@ bW
 au
 aC
 aC
-aC
+wb
 JF
-aj
-qe
+Ds
+bE
 bE
 bE
 bE
@@ -1121,7 +1119,7 @@ bE
 bE
 bE
 aK
-bE
+aZ
 bE
 bE
 bF
@@ -1370,7 +1368,7 @@ ap
 bE
 bE
 aq
-bE
+aV
 bE
 bE
 QS
