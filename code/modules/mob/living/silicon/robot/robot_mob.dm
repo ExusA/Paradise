@@ -57,6 +57,8 @@ GLOBAL_LIST_INIT(robot_verbs_default, list(
 	var/custom_panel = null
 	/// Robot skins with non-default sprites for an open service panel.
 	var/list/custom_panel_names = list("Cricket", "Rover")
+		/// Robot skins with different sprites for open panels for each module.
+	var/list/variable_custom_panels = list("Rover-Medi")
 	/// Robot skins with multiple variants for different modules. They require special handling to make their eyes display.
 	var/list/custom_eye_names = list("Cricket", "Standard")
 	/// Has the robot been emagged?
@@ -1234,7 +1236,9 @@ GLOBAL_LIST_INIT(robot_verbs_default, list(
 		var/panelprefix = "ov"
 		if(custom_sprite) //Custom borgs also have custom panels, heh
 			panelprefix = "[ckey]"
-		if(custom_panel in custom_panel_names) //For default borgs with different panels
+		if(icon_state in variable_custom_panels) //For individual borg modules with different panels
+			panelprefix = icon_state
+		else if(custom_panel in custom_panel_names) //For default borgs with different panels
 			panelprefix = custom_panel
 		if(wiresexposed)
 			overlays += "[panelprefix]-openpanel +w"
